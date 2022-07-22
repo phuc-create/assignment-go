@@ -4,7 +4,7 @@ POSTGRES_USER := postgres
 POSTGRES_PASSWORD := 1
 
 # Initialize the config for your local copy of the repo
-
+COMPOSE := PROJECT_NAME=${PROJECT_NAME} docker-compose -f ./docker-compose.base.yaml -f ./docker-compose.ci.yaml
 run:
 		go run ./cmd/server/main.go
 
@@ -19,4 +19,6 @@ docker-run:
 		docker run ${PROJECT_NAME}
 
 db-migrate:
-		migrate -source file://data/migrations -database $$DB_URL up 2
+	$(COMPOSE) run --rm db-migrate sh -c './migrate -path /migrations -database $$DB_URL up'
+
+
