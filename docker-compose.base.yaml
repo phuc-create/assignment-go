@@ -1,0 +1,30 @@
+# start yaml
+version: '1.0.0'
+
+services:
+  db:
+    container_name: ${PROJECT_NAME}-db-${CONTAINER_SUFFIX:-local}
+    image: postgres
+    restart: always
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+      interval: 1m30s
+      timeout: 30s
+      retries: 3
+    networks:
+      - network
+    environment:
+      TZ: UTC
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_HOST_AUTH_METHOD: trust
+  db-migrate:
+    container_name: ${PROJECT_NAME}-db-migrate-${CONTAINER_SUFFIX:-local}
+    image: migrate/migrate:v1.0.0
+    restart: "no"
+    entrypoint: ""
+    networks:
+      - network
+    environment:
+      TZ: UTC
+      DB_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost:5432/${PROJECT_NAME}?sslmode=disable
