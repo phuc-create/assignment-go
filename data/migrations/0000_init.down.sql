@@ -1,1 +1,2 @@
-DROP DATABASE IF EXISTS bookstore;
+DROP TABLE IF EXISTS books;
+

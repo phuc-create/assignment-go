@@ -8,7 +8,7 @@ import (
 	"fmt"
 
 	"github.com/phuc-create/assignment-go/graph/generated"
-	"github.com/phuc-create/assignment-go/graph/model"
+	model "github.com/phuc-create/assignment-go/graph/model"
 )
 
 // CreateTodo is the resolver for the createTodo field.
