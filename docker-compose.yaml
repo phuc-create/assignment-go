@@ -1,0 +1,27 @@
+# start yaml
+version: '1.0.0'
+
+services:
+  postgres:
+    container_name: ${PROJECT_NAME}-postgres
+    image: postgres
+    ports:
+      - "5432:5432"
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=assignment
+  pgadmin:
+    container_name: ${PROJECT_NAME}-pgadmin4
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: phuc82908@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: postgres

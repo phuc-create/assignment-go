@@ -18,7 +18,17 @@ docker-build:
 docker-run:
 		docker run ${PROJECT_NAME}
 
+compose:
+	docker compose -f "docker-compose.yaml" up -d --build
+
 db-migrate:
 	$(COMPOSE) run --rm db-migrate sh -c './migrate -path /migrations -database $$DB_URL up'
 
 
+migrate-up:
+	migrate -source file://data/migrations \
+					-database "postgres://postgres:postgres@localhost:5432/assignment?sslmode=disable" -verbose up
+
+migrate-down:
+	migrate -source file://data/migrations \
+					-database "postgres://postgres:postgres@localhost:5432/assignment?sslmode=disable" -verbose down

@@ -1,8 +1,13 @@
-CREATE DATABASE bookstore
-    WITH
-    OWNER = postgres
-    ENCODING = 'UTF8'
-    LC_COLLATE = 'C'
-    LC_CTYPE = 'C'
-    TABLESPACE = pg_default
-    CONNECTION LIMIT = -1;
+CREATE TABLE IF NOT EXISTS books
+(
+    id integer NOT NULL,
+    book_name text COLLATE pg_catalog."default" NOT NULL,
+    book_price integer NOT NULL,
+    author_id integer,
+    CONSTRAINT "Books_pkey" PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.books
+    OWNER to postgres;
