@@ -18,17 +18,22 @@ docker-build:
 docker-run:
 	docker run ${PROJECT_NAME}
 
-compose:
+init:
 	docker compose -f "docker-compose.yaml" up -d --build
 
-db-migrate:
-	$(COMPOSE) run --rm db-migrate sh -c './migrate -path /migrations -database $$DB_URL up'
+# db-migrate:
+# 	$(COMPOSE) run --rm db-migrate sh -c './migrate -path /migrations -database $$DB_URL up'
 
-
-migrate-up:
+dropdb:
+	docker exec -it 8a562ddc70a8 psql -U postgres -d postgres -c "DROP DATABASE assignment;"
+migrateup:
 	migrate -source file://data/migrations \
 					-database "postgres://postgres:postgres@localhost:5432/assignment?sslmode=disable" -verbose up
 
-migrate-down:
+# migrateup-force:
+# 	migrate -source file://data/migrations \
+# 					-database "postgres://postgres:postgres@localhost:5432/assignment?sslmode=disable" -verbose force 0
+
+migratedown:
 	migrate -source file://data/migrations \
 					-database "postgres://postgres:postgres@localhost:5432/assignment?sslmode=disable" -verbose down
