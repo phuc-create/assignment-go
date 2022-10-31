@@ -16,7 +16,6 @@ const defaultPort = "8080"
 
 func main() {
 	fmt.Println("This is function")
-	fmt.Println("Hello")
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = defaultPort
