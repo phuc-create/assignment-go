@@ -5,6 +5,7 @@ import (
 
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/phuc-create/assignment-go/models"
+	"github.com/vektah/gqlparser/v2/ast"
 )
 
 func NewExecutableSchemaV2(cfg Config) graphql.ExecutableSchema {
@@ -59,6 +60,22 @@ type executableSchemaV2 struct {
 	directives DirectiveRootV2
 	complexity ComplexityRootV2
 }
+
+// Complexity implements graphql.ExecutableSchema
+func (*executableSchemaV2) Complexity(typeName string, fieldName string, childComplexity int, args map[string]interface{}) (int, bool) {
+	panic("unimplemented")
+}
+
+// Exec implements graphql.ExecutableSchema
+func (*executableSchemaV2) Exec(ctx context.Context) graphql.ResponseHandler {
+	panic("unimplemented")
+}
+
+// Schema implements graphql.ExecutableSchema
+func (*executableSchemaV2) Schema() *ast.Schema {
+	panic("unimplemented")
+}
+
 type executionContext struct {
 	*graphql.OperationContext
 	*executableSchemaV2
