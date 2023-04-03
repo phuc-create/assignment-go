@@ -8,7 +8,7 @@ import (
 	"github.com/vektah/gqlparser/v2/ast"
 )
 
-func NewExecutableSchemaV2(cfg Config) graphql.ExecutableSchema {
+func NewExecutableSchema(cfg Config) graphql.ExecutableSchema {
 	return &executableSchemaV2{
 		resolvers:  cfg.Resolvers,
 		directives: cfg.Directives,

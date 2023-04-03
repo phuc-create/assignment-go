@@ -1,0 +1,57 @@
+package graph
+
+// This file will be automatically regenerated based on the schema, any resolver implementations
+// will be copied through when generating and any unknown code will be moved to the end.
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/phuc-create/assignment-go/graph/generated"
+	"github.com/phuc-create/assignment-go/graph/models"
+)
+
+// AddTeacher is the resolver for the addTeacher field.
+func (r *mutationResolver) AddTeacher(ctx context.Context, teacher models.NewTeacher) (*models.Teacher, error) {
+	panic(fmt.Errorf("not implemented"))
+}
+
+// DeleteTeacher is the resolver for the deleteTeacher field.
+func (r *mutationResolver) DeleteTeacher(ctx context.Context, teacherID string) (bool, error) {
+	panic(fmt.Errorf("not implemented"))
+}
+
+// AddSchool is the resolver for the addSchool field.
+func (r *mutationResolver) AddSchool(ctx context.Context, school models.NewSchool) (*models.School, error) {
+	panic(fmt.Errorf("not implemented"))
+}
+
+// DeleteSchool is the resolver for the deleteSchool field.
+func (r *mutationResolver) DeleteSchool(ctx context.Context, schoolID string) (bool, error) {
+	panic(fmt.Errorf("not implemented"))
+}
+
+// AddStudent is the resolver for the addStudent field.
+func (r *mutationResolver) AddStudent(ctx context.Context, student models.NewStudent) (*models.Student, error) {
+	panic(fmt.Errorf("not implemented"))
+}
+
+// DeleteStudent is the resolver for the deleteStudent field.
+func (r *mutationResolver) DeleteStudent(ctx context.Context, studentID string) (bool, error) {
+	panic(fmt.Errorf("not implemented"))
+}
+
+// AddSubject is the resolver for the addSubject field.
+func (r *mutationResolver) AddSubject(ctx context.Context, subject models.NewSubject) (*models.Subject, error) {
+	panic(fmt.Errorf("not implemented"))
+}
+
+// DeleteSubject is the resolver for the deleteSubject field.
+func (r *mutationResolver) DeleteSubject(ctx context.Context, subjectID string) (bool, error) {
+	panic(fmt.Errorf("not implemented"))
+}
+
+// Mutation returns generated.MutationResolver implementation.
+func (r *Resolver) Mutation() generated.MutationResolver { return &mutationResolver{r} }
+
+type mutationResolver struct{ *Resolver }

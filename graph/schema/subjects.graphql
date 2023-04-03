@@ -1,0 +1,8 @@
+type Subject {
+  ID: ID!
+  Name: String!
+}
+
+input newSubject {
+  Name: String!
+}

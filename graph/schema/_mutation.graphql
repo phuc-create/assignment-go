@@ -1,0 +1,21 @@
+type Mutation {
+  # teacher mutation
+  addTeacher(teacher: newTeacher!): Teacher!
+
+  deleteTeacher(teacherID: String!): Boolean!
+
+  # school mutation
+  addSchool(school: newSchool!): School!
+
+  deleteSchool(schoolID: ID!): Boolean!
+
+  # student mutation
+  addStudent(student: newStudent!): Student!
+
+  deleteStudent(studentID: String!): Boolean!
+
+  # subject mutation
+  addSubject(subject: newSubject!): Subject!
+
+  deleteSubject(subjectID: String!): Boolean!
+}

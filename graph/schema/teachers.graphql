@@ -1,0 +1,12 @@
+type Teacher {
+  ID: ID!
+  Name: String!
+  Phone: String!
+  Email: String!
+}
+
+input newTeacher {
+  Name: String!
+  Phone: String!
+  Email: String!
+}

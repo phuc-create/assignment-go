@@ -37,3 +37,7 @@ migrateup:
 migratedown:
 	migrate -source file://data/migrations \
 					-database "postgres://postgres:postgres@localhost:5432/assignment?sslmode=disable" -verbose down
+
+# for generate graphql code go lang
+generate:
+	go run github.com/99designs/gqlgen generate

@@ -1,0 +1,6 @@
+type Query {
+  getSchools: [School!]!
+  getStudents: [Student!]!
+  getSubjects: [Subject!]!
+  getTeachers: [Teacher!]!
+}
