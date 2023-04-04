@@ -9,6 +9,8 @@ import (
 	_ "github.com/lib/pq"
 )
 
+var DB *sql.DB
+
 func ConnectDB() {
 	// Connect ------------------------------------------------------------------------------------
 	// create connection string
@@ -31,4 +33,5 @@ func ConnectDB() {
 	} else {
 		fmt.Printf("\nSuccessfully connected to database!\n")
 	}
+	DB = db
 }

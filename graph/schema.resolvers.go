@@ -9,13 +9,25 @@ import (
 	"fmt"
 	"math/big"
 
+	"github.com/phuc-create/assignment-go/cmd/config"
 	"github.com/phuc-create/assignment-go/graph/generated"
 	"github.com/phuc-create/assignment-go/graph/models"
 )
 
 // AddTeacher is the resolver for the addTeacher field.
 func (r *mutationResolver) AddTeacher(ctx context.Context, teacher models.NewTeacher) (*models.Teacher, error) {
-	panic(fmt.Errorf("not implemented"))
+	// random ID
+	uuid, _ := rand.Int(rand.Reader, big.NewInt(100))
+	fmt.Println(uuid)
+
+	insertTeacherIntoDB := `INSERT INTO teachers (id,name,phone,email) VALUES($1,$2,$3,$4)`
+	data, err := config.DB.Exec(insertTeacherIntoDB, uuid, teacher.Name, teacher.Phone, teacher.Email)
+	if err != nil {
+		fmt.Println(data)
+		fmt.Println("message:", err.Error())
+		// panic(err)
+	}
+	return nil, nil
 }
 
 // DeleteTeacher is the resolver for the deleteTeacher field.
