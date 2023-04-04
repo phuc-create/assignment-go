@@ -10,6 +10,8 @@ run:
 
 tidy:
 	go mod tidy
+
+# err
 gql-server:
 	go run server.go
 
@@ -18,25 +20,36 @@ docker-build:
 docker-run:
 	docker run ${PROJECT_NAME}
 
-init:
-	docker compose -f "docker-compose.yaml" up -d --build
+
+dropdb:
+	docker exec -it [CONTAINER_ID] psql -U postgres -d postgres -c "DROP DATABASE assignment;"
 
 # db-migrate:
 # 	$(COMPOSE) run --rm db-migrate sh -c './migrate -path /migrations -database $$DB_URL up'
+## Start local development step by step
+#1
+init:
+	docker compose -f "docker-compose.yaml" up -d --build
+# access localhost:5050 to access DB => use username & password in docker-compose file to login
+# register server and fill following infor to register
+# get IP to register a server:
+#		- docker ps (copy postgres DB CONTAINER_ID)
+#		- docker inspect [CONTAINER_ID]
+#		- copy IP V4 Address and paste in pgAdmin host field and click register
 
-dropdb:
-	docker exec -it 8a562ddc70a8 psql -U postgres -d postgres -c "DROP DATABASE assignment;"
+#2
+migratedown:
+	migrate -source file://data/migrations \
+					-database "postgres://postgres:postgres@localhost:5432/assignment?sslmode=disable" -verbose down
+#3
 migrateup:
 	migrate -source file://data/migrations \
 					-database "postgres://postgres:postgres@localhost:5432/assignment?sslmode=disable" -verbose up
 
-# migrateup-force:
-# 	migrate -source file://data/migrations \
-# 					-database "postgres://postgres:postgres@localhost:5432/assignment?sslmode=disable" -verbose force 0
-
-migratedown:
+migrate-f:
 	migrate -source file://data/migrations \
-					-database "postgres://postgres:postgres@localhost:5432/assignment?sslmode=disable" -verbose down
+					-database "postgres://postgres:postgres@localhost:5432/assignment?sslmode=disable" -verbose force 0
+
 
 # for generate graphql code go lang
 generate:
