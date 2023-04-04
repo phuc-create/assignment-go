@@ -1,9 +1,9 @@
 CREATE TABLE IF NOT EXISTS public.rooms
 (
-    id integer NOT NULL,
-    student_id integer,
-    teacher_id integer,
-    seat_num integer,
+    id text NOT NULL,
+    student_id text,
+    teacher_id text,
+    seat_num text,
     PRIMARY KEY (id),
     CONSTRAINT student_id_fk FOREIGN KEY (student_id)
         REFERENCES public.students (id) MATCH SIMPLE

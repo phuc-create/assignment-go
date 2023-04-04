@@ -1,5 +1,5 @@
 type Subject {
-  ID: ID!
+  ID: String!
   Name: String!
 }
 

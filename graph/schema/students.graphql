@@ -1,5 +1,5 @@
 type Student {
-  ID: ID!
+  ID: String!
   Name: String!
   Phone: String!
   Email: String!

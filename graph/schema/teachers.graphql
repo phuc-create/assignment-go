@@ -1,5 +1,5 @@
 type Teacher {
-  ID: ID!
+  ID:  String!
   Name: String!
   Phone: String!
   Email: String!

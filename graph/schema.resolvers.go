@@ -5,9 +5,9 @@ package graph
 
 import (
 	"context"
-	"crypto/rand"
 	"fmt"
-	"math/big"
+	"math/rand"
+	"strconv"
 
 	"github.com/phuc-create/assignment-go/cmd/config"
 	"github.com/phuc-create/assignment-go/graph/generated"
@@ -17,17 +17,23 @@ import (
 // AddTeacher is the resolver for the addTeacher field.
 func (r *mutationResolver) AddTeacher(ctx context.Context, teacher models.NewTeacher) (*models.Teacher, error) {
 	// random ID
-	uuid, _ := rand.Int(rand.Reader, big.NewInt(100))
+	uuid := "uuid+" + strconv.Itoa(rand.Int())
 	fmt.Println(uuid)
 
 	insertTeacherIntoDB := `INSERT INTO teachers (id,name,phone,email) VALUES($1,$2,$3,$4)`
-	data, err := config.DB.Exec(insertTeacherIntoDB, uuid, teacher.Name, teacher.Phone, teacher.Email)
-	if err != nil {
-		fmt.Println(data)
-		fmt.Println("message:", err.Error())
-		// panic(err)
+	newT := &models.Teacher{
+		ID:    uuid,
+		Name:  teacher.Name,
+		Phone: teacher.Phone,
+		Email: teacher.Email,
 	}
-	return nil, nil
+	_, err := config.DB.Exec(insertTeacherIntoDB, newT.ID, newT.Name, newT.Phone, newT.Email)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return newT, nil
 }
 
 // DeleteTeacher is the resolver for the deleteTeacher field.
@@ -47,9 +53,9 @@ func (r *mutationResolver) DeleteSchool(ctx context.Context, schoolID string) (b
 
 // AddStudent is the resolver for the addStudent field.
 func (r *mutationResolver) AddStudent(ctx context.Context, student models.NewStudent) (*models.Student, error) {
-	uuid, _ := rand.Int(rand.Reader, big.NewInt(100))
+	uuid := "uuid+" + strconv.Itoa(rand.Int())
 	new := &models.Student{
-		ID:    fmt.Sprintf("T%d", uuid),
+		ID:    uuid,
 		Name:  student.Name,
 		Email: student.Email,
 		Phone: student.Phone,

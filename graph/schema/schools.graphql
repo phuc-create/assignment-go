@@ -1,6 +1,6 @@
 # Type for school
 type School {
-  ID: ID!
+  ID: String!
   Name: String!
   Email: String!
 }

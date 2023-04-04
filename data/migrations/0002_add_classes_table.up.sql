@@ -1,10 +1,10 @@
 CREATE TABLE IF NOT EXISTS public.classes
 (
-    class_id integer NOT NULL,
+    class_id text NOT NULL,
     class_name text DEFAULT 'Unknow',
-    attendants integer DEFAULT 0,
-    subject_id integer,
-    room_id integer,
+    attendants text DEFAULT 0,
+    subject_id text,
+    room_id text,
     PRIMARY KEY (class_id),
     CONSTRAINT subject_id_fk FOREIGN KEY (subject_id)
         REFERENCES public.subjects (id) MATCH SIMPLE
