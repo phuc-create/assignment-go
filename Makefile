@@ -1,7 +1,7 @@
 # this file rule for entire project
 PROJECT_NAME := assignment-go
 POSTGRES_USER := postgres
-POSTGRES_PASSWORD := 1
+POSTGRES_PASSWORD := postgres
 
 # Initialize the config for your local copy of the repo
 COMPOSE := PROJECT_NAME=${PROJECT_NAME} docker-compose -f ./docker-compose.base.yaml -f ./docker-compose.ci.yaml
