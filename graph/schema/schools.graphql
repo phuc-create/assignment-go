@@ -1,0 +1,11 @@
+# Type for school
+type School {
+  ID: ID!
+  Name: String!
+  Email: String!
+}
+
+input newSchool {
+  Name: String!
+  Email: String!
+}

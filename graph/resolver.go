@@ -1,11 +1,16 @@
+//go:generate go run github.com/99designs/gqlgen generate
 package graph
 
-import model "github.com/phuc-create/assignment-go/graph/model"
-
-// This file will not be regenerated automatically.
-//
-// It serves as dependency injection for your app, add any dependencies you require here.
+import "github.com/phuc-create/assignment-go/graph/models"
 
 type Resolver struct {
-	todos []*model.Todo
+	schools  []*models.School
+	students []*models.Student
+	subjects []*models.Subject
+	teachers []*models.Teacher
+
+	newTeacher []*models.NewTeacher
+	newSchool  []*models.NewSchool
+	newStudent []*models.NewStudent
+	newSubject []*models.NewSubject
 }
