@@ -5,7 +5,9 @@ package graph
 
 import (
 	"context"
+	"crypto/rand"
 	"fmt"
+	"math/big"
 
 	"github.com/phuc-create/assignment-go/graph/generated"
 	"github.com/phuc-create/assignment-go/graph/models"
@@ -33,7 +35,15 @@ func (r *mutationResolver) DeleteSchool(ctx context.Context, schoolID string) (b
 
 // AddStudent is the resolver for the addStudent field.
 func (r *mutationResolver) AddStudent(ctx context.Context, student models.NewStudent) (*models.Student, error) {
-	panic(fmt.Errorf("not implemented"))
+	uuid, _ := rand.Int(rand.Reader, big.NewInt(100))
+	new := &models.Student{
+		ID:    fmt.Sprintf("T%d", uuid),
+		Name:  student.Name,
+		Email: student.Email,
+		Phone: student.Phone,
+	}
+	r.students = append(r.students, new)
+	return new, nil
 }
 
 // DeleteStudent is the resolver for the deleteStudent field.
@@ -58,7 +68,7 @@ func (r *queryResolver) GetSchools(ctx context.Context) ([]*models.School, error
 
 // GetStudents is the resolver for the getStudents field.
 func (r *queryResolver) GetStudents(ctx context.Context) ([]*models.Student, error) {
-	panic(fmt.Errorf("not implemented"))
+	return r.students, nil
 }
 
 // GetSubjects is the resolver for the getSubjects field.
