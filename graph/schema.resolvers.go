@@ -51,7 +51,31 @@ func (r *mutationResolver) DeleteSubject(ctx context.Context, subjectID string) 
 	panic(fmt.Errorf("not implemented"))
 }
 
+// GetSchools is the resolver for the getSchools field.
+func (r *queryResolver) GetSchools(ctx context.Context) ([]*models.School, error) {
+	panic(fmt.Errorf("not implemented"))
+}
+
+// GetStudents is the resolver for the getStudents field.
+func (r *queryResolver) GetStudents(ctx context.Context) ([]*models.Student, error) {
+	panic(fmt.Errorf("not implemented"))
+}
+
+// GetSubjects is the resolver for the getSubjects field.
+func (r *queryResolver) GetSubjects(ctx context.Context) ([]*models.Subject, error) {
+	panic(fmt.Errorf("not implemented"))
+}
+
+// GetTeachers is the resolver for the getTeachers field.
+func (r *queryResolver) GetTeachers(ctx context.Context) ([]*models.Teacher, error) {
+	panic(fmt.Errorf("not implemented"))
+}
+
 // Mutation returns generated.MutationResolver implementation.
 func (r *Resolver) Mutation() generated.MutationResolver { return &mutationResolver{r} }
 
+// Query returns generated.QueryResolver implementation.
+func (r *Resolver) Query() generated.QueryResolver { return &queryResolver{r} }
+
 type mutationResolver struct{ *Resolver }
+type queryResolver struct{ *Resolver }

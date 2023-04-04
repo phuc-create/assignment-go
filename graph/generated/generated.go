@@ -407,7 +407,14 @@ func (ec *executionContext) introspectType(name string) (*introspection.Type, er
 }
 
 var sources = []*ast.Source{
-	{Name: "../schema/_mutation.graphql", Input: `type Mutation {
+	{Name: "../schema/schema.graphql", Input: `type Query {
+  getSchools: [School!]!
+  getStudents: [Student!]!
+  getSubjects: [Subject!]!
+  getTeachers: [Teacher!]!
+}
+
+type Mutation {
   # teacher mutation
   addTeacher(teacher: newTeacher!): Teacher!
 
@@ -427,13 +434,6 @@ var sources = []*ast.Source{
   addSubject(subject: newSubject!): Subject!
 
   deleteSubject(subjectID: String!): Boolean!
-}
-`, BuiltIn: false},
-	{Name: "../schema/_query.graphql", Input: `type Query {
-  getSchools: [School!]!
-  getStudents: [Student!]!
-  getSubjects: [Subject!]!
-  getTeachers: [Teacher!]!
 }
 `, BuiltIn: false},
 	{Name: "../schema/schools.graphql", Input: `# Type for school
