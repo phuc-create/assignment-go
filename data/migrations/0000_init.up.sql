@@ -4,7 +4,7 @@
 -- school
 -- room
 -- class
-CREATE TABLE IF NOT EXISTS public.student
+CREATE TABLE IF NOT EXISTS public.students
 (
     id integer NOT NULL,
     name text DEFAULT 'Unknow',
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS public.student
     CONSTRAINT "Student_pkey" PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS public.teacher
+CREATE TABLE IF NOT EXISTS public.teachers
 (
     id integer NOT NULL,
     name text,
@@ -22,14 +22,14 @@ CREATE TABLE IF NOT EXISTS public.teacher
     CONSTRAINT "Teacher_pkey" PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS public.subject
+CREATE TABLE IF NOT EXISTS public.subjects
 (
     id integer NOT NULL,
     name text,
     CONSTRAINT "Subject_pkey" PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS public.school 
+CREATE TABLE IF NOT EXISTS public.schools
 (
     id integer NOT NULL,
     name text,
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS public.school
 );
 
 
-ALTER TABLE IF EXISTS public.student OWNER to postgres;
-ALTER TABLE IF EXISTS public.teacher OWNER to postgres;
-ALTER TABLE IF EXISTS public.subject OWNER to postgres;
-ALTER TABLE IF EXISTS public.school OWNER to postgres;
+ALTER TABLE IF EXISTS public.students OWNER to postgres;
+ALTER TABLE IF EXISTS public.teachers OWNER to postgres;
+ALTER TABLE IF EXISTS public.subjects OWNER to postgres;
+ALTER TABLE IF EXISTS public.schools OWNER to postgres;
