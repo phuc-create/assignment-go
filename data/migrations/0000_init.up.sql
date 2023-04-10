@@ -1,12 +1,6 @@
--- student
--- teacher
--- subject
--- school
--- room
--- class
 CREATE TABLE IF NOT EXISTS public.students
 (
-    id integer NOT NULL,
+    id text NOT NULL,
     name text DEFAULT 'Unknow',
     phone text,
     email text,
@@ -15,7 +9,7 @@ CREATE TABLE IF NOT EXISTS public.students
 
 CREATE TABLE IF NOT EXISTS public.teachers
 (
-    id integer NOT NULL,
+    id text NOT NULL,
     name text,
     phone text,
     email text,
@@ -24,14 +18,14 @@ CREATE TABLE IF NOT EXISTS public.teachers
 
 CREATE TABLE IF NOT EXISTS public.subjects
 (
-    id integer NOT NULL,
+    id text NOT NULL,
     name text,
     CONSTRAINT "Subject_pkey" PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS public.schools
 (
-    id integer NOT NULL,
+    id text NOT NULL,
     name text,
     email text,
     CONSTRAINT "School_pkey" PRIMARY KEY (id)

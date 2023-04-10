@@ -9,6 +9,8 @@ import (
 	_ "github.com/lib/pq"
 )
 
+var DB *sql.DB
+
 func ConnectDB() {
 	// Connect ------------------------------------------------------------------------------------
 	// create connection string
@@ -23,7 +25,6 @@ func ConnectDB() {
 	if err != nil {
 		log.Fatalf("Error: %s", err)
 	}
-	defer db.Close()
 
 	err = db.Ping()
 	if err != nil {
@@ -31,4 +32,5 @@ func ConnectDB() {
 	} else {
 		fmt.Printf("\nSuccessfully connected to database!\n")
 	}
+	DB = db
 }

@@ -438,7 +438,7 @@ type Mutation {
 `, BuiltIn: false},
 	{Name: "../schema/schools.graphql", Input: `# Type for school
 type School {
-  ID: ID!
+  ID: String!
   Name: String!
   Email: String!
 }
@@ -449,7 +449,7 @@ input newSchool {
 }
 `, BuiltIn: false},
 	{Name: "../schema/students.graphql", Input: `type Student {
-  ID: ID!
+  ID: String!
   Name: String!
   Phone: String!
   Email: String!
@@ -462,7 +462,7 @@ input newStudent {
 }
 `, BuiltIn: false},
 	{Name: "../schema/subjects.graphql", Input: `type Subject {
-  ID: ID!
+  ID: String!
   Name: String!
 }
 
@@ -471,7 +471,7 @@ input newSubject {
 }
 `, BuiltIn: false},
 	{Name: "../schema/teachers.graphql", Input: `type Teacher {
-  ID: ID!
+  ID:  String!
   Name: String!
   Phone: String!
   Email: String!
@@ -1504,7 +1504,7 @@ func (ec *executionContext) _School_ID(ctx context.Context, field graphql.Collec
 	}
 	res := resTmp.(string)
 	fc.Result = res
-	return ec.marshalNID2string(ctx, field.Selections, res)
+	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_School_ID(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1514,7 +1514,7 @@ func (ec *executionContext) fieldContext_School_ID(ctx context.Context, field gr
 		IsMethod:   false,
 		IsResolver: false,
 		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
-			return nil, errors.New("field of type ID does not have child fields")
+			return nil, errors.New("field of type String does not have child fields")
 		},
 	}
 	return fc, nil
@@ -1636,7 +1636,7 @@ func (ec *executionContext) _Student_ID(ctx context.Context, field graphql.Colle
 	}
 	res := resTmp.(string)
 	fc.Result = res
-	return ec.marshalNID2string(ctx, field.Selections, res)
+	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Student_ID(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1646,7 +1646,7 @@ func (ec *executionContext) fieldContext_Student_ID(ctx context.Context, field g
 		IsMethod:   false,
 		IsResolver: false,
 		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
-			return nil, errors.New("field of type ID does not have child fields")
+			return nil, errors.New("field of type String does not have child fields")
 		},
 	}
 	return fc, nil
@@ -1812,7 +1812,7 @@ func (ec *executionContext) _Subject_ID(ctx context.Context, field graphql.Colle
 	}
 	res := resTmp.(string)
 	fc.Result = res
-	return ec.marshalNID2string(ctx, field.Selections, res)
+	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Subject_ID(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1822,7 +1822,7 @@ func (ec *executionContext) fieldContext_Subject_ID(ctx context.Context, field g
 		IsMethod:   false,
 		IsResolver: false,
 		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
-			return nil, errors.New("field of type ID does not have child fields")
+			return nil, errors.New("field of type String does not have child fields")
 		},
 	}
 	return fc, nil
@@ -1900,7 +1900,7 @@ func (ec *executionContext) _Teacher_ID(ctx context.Context, field graphql.Colle
 	}
 	res := resTmp.(string)
 	fc.Result = res
-	return ec.marshalNID2string(ctx, field.Selections, res)
+	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Teacher_ID(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1910,7 +1910,7 @@ func (ec *executionContext) fieldContext_Teacher_ID(ctx context.Context, field g
 		IsMethod:   false,
 		IsResolver: false,
 		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
-			return nil, errors.New("field of type ID does not have child fields")
+			return nil, errors.New("field of type String does not have child fields")
 		},
 	}
 	return fc, nil
