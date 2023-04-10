@@ -20,7 +20,7 @@ func (r *mutationResolver) AddTeacher(ctx context.Context, teacher models.NewTea
 	uuid := "uuid+" + strconv.Itoa(rand.Int())
 	fmt.Println(uuid)
 
-	insertTeacherIntoDB := `INSERT INTO teachers (id,name,phone,email) VALUES($1,$2,$3,$4)`
+	var insertTeacherIntoDB = `INSERT INTO teachers (id,name,phone,email) VALUES($1,$2,$3,$4)`
 	newT := &models.Teacher{
 		ID:    uuid,
 		Name:  teacher.Name,

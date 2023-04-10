@@ -9,8 +9,8 @@ type Resolver struct {
 	subjects []*models.Subject
 	teachers []*models.Teacher
 
-	newTeacher []*models.NewTeacher
-	newSchool  []*models.NewSchool
-	newStudent []*models.NewStudent
-	newSubject []*models.NewSubject
+	newTeacher *models.NewTeacher
+	newSchool  *models.NewSchool
+	newStudent *models.NewStudent
+	newSubject *models.NewSubject
 }
